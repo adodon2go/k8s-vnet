@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cnns-nse-vl3
+
+spec:
+  selector:
+    matchLabels:
+      app: cnns-nse-vl3
+  template:
+    metadata:
+      annotations:
+        cnns/nsr.address: "192.168.43.150:8080"
+      labels:
+        app: cnns-nse-vl3
+    spec:
+      containers:
+        - name: nse
+          image: {{ .Values.image }}:{{ .Values.tag }}
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /etc/cnns-nse/config.yaml
+              subPath: config.yaml
+              name: cnns-nse-vl3-config-volume
+
+      volumes:
+        - name: cnns-nse-vl3-config-volume
+          configMap:
+            name: cnns-nse-vl3-config

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cnns-nse-vl3-config
+data:
+  config.yaml: |
+    endpoints:
+      - cnns:
+          name: cnns1
+          address: golang.com:9000
+          accesstoken: 123123
+        vl3:
+          imap:
+            prefixpool: 192.168.33.0/24
+            routes: [192.168.34.0/24]
+          ifname: nsm3
+          nameservers: [nms.google.com, nms.google.com2]

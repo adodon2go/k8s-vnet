@@ -1,0 +1,4 @@
+---
+image: cisco/cnns-nse
+tag: latest
+pullPolicy: IfNotPresent
