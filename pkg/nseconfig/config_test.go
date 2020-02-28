@@ -23,7 +23,7 @@ func TestNewConfig(t *testing.T) {
 				Address:     "golang.com:9000",
 				AccessToken: "123123",
 			}, VL3: VL3{
-				IMAP: IMAP{
+				IPAM: IPAM{
 					PrefixPool: "192.168.33.0/24",
 					Routes:     []string{"192.168.34.0/24"},
 				},

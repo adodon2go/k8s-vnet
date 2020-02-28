@@ -98,7 +98,7 @@ func (c CNNS) validate() error {
 }
 
 type VL3 struct {
-	IMAP        IMAP
+	IPAM        IPAM
 	Ifname      string
 	NameServers []string
 }
@@ -106,10 +106,10 @@ type VL3 struct {
 func (v VL3) validate() error {
 	var errs InvalidConfigErrors
 
-	if _, _, err := net.ParseCIDR(v.IMAP.PrefixPool); err != nil {
+	if _, _, err := net.ParseCIDR(v.IPAM.PrefixPool); err != nil {
 		errs = append(errs, fmt.Errorf("prefix pool is not a valid subnet: %s", err))
 	}
-	for i, r := range v.IMAP.Routes {
+	for i, r := range v.IPAM.Routes {
 		if _, _, err := net.ParseCIDR(r); err != nil {
 			errs = append(errs, fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", i, r, err))
 		}
@@ -121,7 +121,7 @@ func (v VL3) validate() error {
 	return nil
 }
 
-type IMAP struct {
+type IPAM struct {
 	PrefixPool string
 	Routes     []string
 }
