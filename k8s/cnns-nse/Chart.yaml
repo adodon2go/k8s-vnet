@@ -1,6 +1,0 @@
----
-apiVersion: v1
-appVersion: "0.1"
-description: Cisco CNNS-NSR
-name: cnns-nse
-version: 0.1.0

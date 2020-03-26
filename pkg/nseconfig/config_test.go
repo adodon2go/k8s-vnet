@@ -65,7 +65,7 @@ endpoints:
       address: golang.com:9000
       accesstoken: 123123
     vl3:
-      imap:
+      ipam:
         prefixpool: 192.168.33.0/24
         routes: [192.168.34.0/24]
       ifname: nsm3
@@ -78,7 +78,7 @@ endpoints:
       name: ""
       address: ""
     vl3:
-      imap:
+      ipam:
         prefixpool: invalid-pull
         routes: [invalid-route1, invalid-route2]
       ifname: 
