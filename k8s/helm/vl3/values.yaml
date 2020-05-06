@@ -10,6 +10,7 @@ pullPolicy: Always
 cnns:
   addr: localhost
   port: 5005
+  cd: vl3-service-connectivity-domain
     # addr: 
 #  domain: nsr.foo.com
 

@@ -19,9 +19,10 @@ func TestNewConfig(t *testing.T) {
 		"success": {
 			file: testFile1,
 			config: &Config{Endpoints: []*Endpoint{{CNNS: CNNS{
-				Name:        "cnns1",
-				Address:     "golang.com:9000",
-				AccessToken: "123123",
+				Name:               "cnns1",
+				Address:            "golang.com:9000",
+				AccessToken:        "123123",
+				ConnectivityDomain: "test-connectivity-domain",
 			}, VL3: VL3{
 				IPAM: IPAM{
 					PrefixPool: "192.168.33.0/24",
@@ -36,6 +37,7 @@ func TestNewConfig(t *testing.T) {
 			err: InvalidConfigErrors([]error{
 				fmt.Errorf("cnns addreses is not set"),
 				fmt.Errorf("cnns name is not set"),
+				fmt.Errorf("connectivity domain is not set"),
 				fmt.Errorf("prefix pool is not a valid subnet: %s", &net.ParseError{Type: "CIDR address", Text: "invalid-pull"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 0, "invalid-route1", &net.ParseError{Type: "CIDR address", Text: "invalid-route1"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 1, "invalid-route2", &net.ParseError{Type: "CIDR address", Text: "invalid-route2"}),
@@ -64,6 +66,7 @@ endpoints:
       name: cnns1
       address: golang.com:9000
       accesstoken: 123123
+      connectivitydomain: test-connectivity-domain
     vl3:
       ipam:
         prefixpool: 192.168.33.0/24

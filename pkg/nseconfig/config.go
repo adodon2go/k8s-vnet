@@ -24,9 +24,10 @@ type Endpoint struct {
 }
 
 type CNNS struct {
-	Name        string
-	Address     string
-	AccessToken string
+	Name               string
+	Address            string
+	AccessToken        string
+	ConnectivityDomain string
 }
 
 type VL3 struct {

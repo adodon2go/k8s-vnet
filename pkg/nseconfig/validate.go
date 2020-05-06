@@ -24,6 +24,9 @@ func (c CNNS) validate() error {
 	if empty(c.Name) {
 		errs = append(errs, fmt.Errorf("cnns name is not set"))
 	}
+	if empty(c.ConnectivityDomain) {
+		errs = append(errs, fmt.Errorf("connectivity domain is not set"))
+	}
 
 	if len(errs) > 0 {
 		return errs
