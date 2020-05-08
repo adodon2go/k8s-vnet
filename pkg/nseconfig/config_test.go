@@ -25,8 +25,9 @@ func TestNewConfig(t *testing.T) {
 				ConnectivityDomain: "test-connectivity-domain",
 			}, VL3: VL3{
 				IPAM: IPAM{
-					PrefixPool: "192.168.33.0/24",
-					Routes:     []string{"192.168.34.0/24"},
+					DefaultPrefixPool: "192.168.33.0/24",
+					PrefixLength:      24,
+					Routes:            []string{"192.168.34.0/24"},
 				},
 				Ifname:      "nsm3",
 				NameServers: []string{"nms.google.com", "nms.google.com2"},
@@ -41,6 +42,7 @@ func TestNewConfig(t *testing.T) {
 				fmt.Errorf("prefix pool is not a valid subnet: %s", &net.ParseError{Type: "CIDR address", Text: "invalid-pull"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 0, "invalid-route1", &net.ParseError{Type: "CIDR address", Text: "invalid-route1"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 1, "invalid-route2", &net.ParseError{Type: "CIDR address", Text: "invalid-route2"}),
+				fmt.Errorf("prefix length is not valid, it must be between 1 and 32"),
 			}),
 		},
 	} {
@@ -65,14 +67,15 @@ endpoints:
   - cnns:
       name: cnns1
       address: golang.com:9000
-      accesstoken: 123123
-      connectivitydomain: test-connectivity-domain
+      accessToken: 123123
+      connectivityDomain: test-connectivity-domain
     vl3:
       ipam:
-        prefixpool: 192.168.33.0/24
+        defaultPrefixPool: 192.168.33.0/24
+        prefixLength: 24
         routes: [192.168.34.0/24]
-      ifname: nsm3
-      nameservers: [nms.google.com, nms.google.com2]
+      ifName: nsm3
+      nameServers: [nms.google.com, nms.google.com2]
 `
 
 const testFile2 = `
@@ -82,8 +85,9 @@ endpoints:
       address: ""
     vl3:
       ipam:
-        prefixpool: invalid-pull
+        defaultPrefixPool: invalid-pull
+        prefixLength: 100
         routes: [invalid-route1, invalid-route2]
-      ifname: 
-      nameservers: []
+      ifName: 
+      nameServers: []
 `

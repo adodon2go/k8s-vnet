@@ -37,13 +37,17 @@ func (c CNNS) validate() error {
 func (v VL3) validate() error {
 	var errs InvalidConfigErrors
 
-	if _, _, err := net.ParseCIDR(v.IPAM.PrefixPool); err != nil {
+	if _, _, err := net.ParseCIDR(v.IPAM.DefaultPrefixPool); err != nil {
 		errs = append(errs, fmt.Errorf("prefix pool is not a valid subnet: %s", err))
 	}
 	for i, r := range v.IPAM.Routes {
 		if _, _, err := net.ParseCIDR(r); err != nil {
 			errs = append(errs, fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", i, r, err))
 		}
+	}
+
+	if v.IPAM.PrefixLength < 1 || v.IPAM.PrefixLength > 32 {
+		errs = append(errs, fmt.Errorf("prefix length is not valid, it must be between 1 and 32"))
 	}
 
 	if len(errs) > 0 {
