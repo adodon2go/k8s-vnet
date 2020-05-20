@@ -67,7 +67,7 @@ func (uce *vppEndpoint) Name() string {
 func MakeNewVPPEndpoint(service Service) cnf.CompositeEndpointFactory {
 	return func(cfg *common.NSConfiguration, _ *string) (server networkservice.NetworkServiceServer, err error) {
 		return &vppEndpoint{
-			serviceName: cfg.AdvertiseNseName,
+			serviceName: cfg.EndpointNetworkService,
 			ifname:      cfg.NscInterfaceName,
 			backend:     service,
 		}, nil
