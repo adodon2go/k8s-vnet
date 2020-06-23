@@ -53,7 +53,6 @@ func TestNewConfig(t *testing.T) {
 				fmt.Errorf("prefix pool is not a valid subnet: %s", &net.ParseError{Type: "CIDR address", Text: "invalid-pull"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 0, "invalid-route1", &net.ParseError{Type: "CIDR address", Text: "invalid-route1"}),
 				fmt.Errorf("route nr %d with value %s is not a valid subnet: %s", 1, "invalid-route2", &net.ParseError{Type: "CIDR address", Text: "invalid-route2"}),
-				fmt.Errorf("prefix length is not valid, it must be between 1 and 32"),
 			}),
 		},
 	} {
