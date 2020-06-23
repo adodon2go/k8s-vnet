@@ -3,6 +3,7 @@ module github.com/danielvladco/k8s-vnet
 go 1.13
 
 require (
+	github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd // indirect
 	github.com/golang/protobuf v1.3.3
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
 	github.com/ligato/cn-infra v2.2.0+incompatible // indirect

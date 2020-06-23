@@ -49,7 +49,7 @@ func (v VL3) validate() error {
 		}
 	}
 
-	if v.IPAM.PrefixLength < 1 || v.IPAM.PrefixLength > 32 {
+	if v.IPAM.PrefixLength > 32 {
 		errs = append(errs, fmt.Errorf("prefix length is not valid, it must be between 1 and 32"))
 	}
 
