@@ -18,7 +18,7 @@ type Endpoint struct {
 
 	NseName string `yaml:"nseName"` //TODO temporary in order to be able to run examples
 
-	CNNS CNNS `yaml:"cnns"`
+	CNNS *CNNS `yaml:"cnns"`
 
 	VL3 VL3 `yaml:"vl3"`
 }

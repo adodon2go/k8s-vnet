@@ -18,7 +18,7 @@ func TestNewConfig(t *testing.T) {
 	}{
 		"success": {
 			file: testFile1,
-			config: &Config{Endpoints: []*Endpoint{{CNNS: CNNS{
+			config: &Config{Endpoints: []*Endpoint{{CNNS: &CNNS{
 				Name:               "cnns1",
 				Address:            "golang.com:9000",
 				AccessToken:        "123123",
@@ -32,6 +32,16 @@ func TestNewConfig(t *testing.T) {
 				},
 				Ifname:      "nsm3",
 				NameServers: []string{"nms.google.com", "nms.google.com2"},
+			}}}},
+		},
+		"success-minimal-config": {
+			file: testFile3,
+			config: &Config{Endpoints: []*Endpoint{{VL3: VL3{
+				IPAM: IPAM{
+					DefaultPrefixPool: "192.168.33.0/24",
+					Routes:            []string{"192.168.34.0/24"},
+				},
+				Ifname: "endpoint0",
 			}}}},
 		},
 		"validation-errors": {
@@ -92,4 +102,13 @@ endpoints:
         routes: [invalid-route1, invalid-route2]
       ifName: 
       nameServers: []
+`
+
+const testFile3 = `
+endpoints:
+  - vl3:
+      ipam:
+        defaultPrefixPool: 192.168.33.0/24
+        routes: [192.168.34.0/24]
+      ifName: endpoint0
 `

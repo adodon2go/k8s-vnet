@@ -16,7 +16,10 @@ func (v InvalidConfigErrors) Error() string {
 	return b.String()
 }
 
-func (c CNNS) validate() error {
+func (c *CNNS) validate() error {
+	if c == nil {
+		return nil
+	}
 	var errs InvalidConfigErrors
 	if empty(c.Address) {
 		errs = append(errs, fmt.Errorf("cnns addreses is not set"))
@@ -72,6 +75,9 @@ func (e Endpoint) validate() error {
 				errs = append(errs, err)
 			}
 		}
+	}
+	if e.CNNS == nil {
+		e.CNNS = &CNNS{}
 	}
 	if len(errs) > 0 {
 		return errs
