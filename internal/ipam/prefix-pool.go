@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/networkservicemesh/networkservicemesh/sdk/common"
+	"cisco-app-networking.github.io/networkservicemesh/sdk/common"
 )
 
 type PrefixPoolGenerator func(cfg *common.NSConfiguration) (string, error)

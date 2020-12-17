@@ -1,11 +1,11 @@
 package ipam
 
 import (
-	"github.com/networkservicemesh/networkservicemesh/controlplane/api/networkservice"
-	"github.com/networkservicemesh/networkservicemesh/sdk/common"
-	"github.com/networkservicemesh/networkservicemesh/sdk/endpoint"
+	"cisco-app-networking.github.io/networkservicemesh/controlplane/api/networkservice"
+	"cisco-app-networking.github.io/networkservicemesh/sdk/common"
+	"cisco-app-networking.github.io/networkservicemesh/sdk/endpoint"
 
-	"github.com/danielvladco/k8s-vnet/internal/cnf"
+	"github.com/adodon2go/k8s-vnet/internal/cnf"
 )
 
 func MakeNewIpamEndpoint(ipamCidrGen PrefixPoolGenerator) cnf.CompositeEndpointFactory {

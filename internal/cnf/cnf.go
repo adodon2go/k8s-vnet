@@ -5,12 +5,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/networkservicemesh/networkservicemesh/controlplane/api/networkservice"
-	"github.com/networkservicemesh/networkservicemesh/sdk/common"
-	"github.com/networkservicemesh/networkservicemesh/sdk/endpoint"
+	"cisco-app-networking.github.io/networkservicemesh/controlplane/api/networkservice"
+	"cisco-app-networking.github.io/networkservicemesh/sdk/common"
+	"cisco-app-networking.github.io/networkservicemesh/sdk/endpoint"
 	"github.com/sirupsen/logrus"
 
-	"github.com/danielvladco/k8s-vnet/pkg/nseconfig"
+	"github.com/adodon2go/k8s-vnet/pkg/nseconfig"
 )
 
 type CompositeEndpointFactory func(cfg *common.NSConfiguration, serviceEndpointName *string) (networkservice.NetworkServiceServer, error)

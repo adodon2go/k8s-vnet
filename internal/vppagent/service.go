@@ -12,8 +12,8 @@ import (
 	"github.com/ligato/vpp-agent/api/models/vpp"
 	interfaces "github.com/ligato/vpp-agent/api/models/vpp/interfaces"
 	vpp_l3 "github.com/ligato/vpp-agent/api/models/vpp/l3"
-	"github.com/networkservicemesh/networkservicemesh/controlplane/api/connection"
-	"github.com/networkservicemesh/networkservicemesh/controlplane/api/connection/mechanisms/memif"
+	"cisco-app-networking.github.io/networkservicemesh/controlplane/api/connection"
+	"cisco-app-networking.github.io/networkservicemesh/controlplane/api/connection/mechanisms/memif"
 	"github.com/sirupsen/logrus"
 )
 
